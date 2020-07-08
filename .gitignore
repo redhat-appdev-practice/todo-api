@@ -1,0 +1,10 @@
+.idea
+.openapi-generator
+templates
+**/*.iml
+target
+.vscode
+.settings
+.classpath
+.project
+.factorypath

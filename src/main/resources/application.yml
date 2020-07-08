@@ -1,0 +1,39 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:todos
+    username: ${POSTGRES_USERNAME:SA}
+    password: ${POSTGRES_PASSWORD:""}
+  data:
+    jpa:
+      repositories:
+        enabled: true
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+server:
+  servlet:
+    context-path: /api/v1
+  port: 9080
+springfox:
+  documentation:
+    swagger:
+      v2:
+        path: /api-docs
+
+
+---
+spring:
+  profiles: compose
+  datasource:
+    url: jdbc:postgresql://tododb:5432/todos
+    driver-class-name:  org.postgresql.Driver
+    username: tododb
+    password: tododb
+    initialization-mode: always
+server:
+  max-http-header-size: 65535
